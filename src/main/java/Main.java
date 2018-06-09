@@ -1,3 +1,4 @@
+import builder.Pizza;
 import facade.Facade;
 import singleton.User;
 import strategy.*;
@@ -8,8 +9,19 @@ public class Main {
 //        strategy();
 //        singleton2();
 //        singleton();
-        
+        builder();
 
+    }
+
+    private static void builder() {
+        Pizza pizza = new Pizza.PizzaBuilder()
+                .setName("Hawajska")
+                .setToppings("Ananas")
+                .setToppings("Szynka", "Ser", "Pomidor")
+                .setSize(50)
+                .setPrice(25)
+                .make();
+        System.out.println(pizza.toString());
     }
 
     private static void singleton2() {
