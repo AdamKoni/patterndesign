@@ -3,8 +3,12 @@ import facade.Facade;
 import factory.Document;
 import factory.DocumentFactory;
 import factory.DocumentType;
+import observer.Person;
+import observer.Weather;
 import singleton.User;
 import strategy.*;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,8 +17,28 @@ public class Main {
 //        singleton2();
 //        singleton();
 //        builder();
-        factory();
+//        factory();
+        observer();
 
+
+
+    }
+
+    private static void observer() {
+        Weather weather = new Weather();
+
+        Person person1 = new Person("John", 10);
+        Person person2 = new Person("Tom", 15);
+        Person person3 = new Person("Peter", 30);
+
+        weather.addObservers(person1,person2,person3);
+        Scanner in = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("Podaj temp w 'C': ");
+            int actuallTempreature = in.nextInt();
+            weather.setCurrentTemperature(actuallTempreature);
+        }
 
     }
 
