@@ -1,5 +1,8 @@
 import builder.Pizza;
 import facade.Facade;
+import factory.Document;
+import factory.DocumentFactory;
+import factory.DocumentType;
 import singleton.User;
 import strategy.*;
 
@@ -9,8 +12,20 @@ public class Main {
 //        strategy();
 //        singleton2();
 //        singleton();
-        builder();
+//        builder();
+        factory();
 
+
+    }
+
+    private static void factory() {
+        DocumentFactory factory = new DocumentFactory();
+        String text = "Test tekstu \n Więcej tekstu";
+        Document document = factory.createDocument(text, DocumentType.TXT);
+        document.writeFile();
+
+        Document documentHtml = factory.createDocument(text,DocumentType.HTML);
+        documentHtml.writeFile();
     }
 
     private static void builder() {
